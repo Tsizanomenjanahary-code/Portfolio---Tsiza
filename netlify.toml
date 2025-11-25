@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+  command = ""
+
+# Netlify form handling is automatic if the form markup contains data-netlify="true"
+# If you use Netlify, you can enable form notifications in the Netlify dashboard.
+[context.production.environment]
+  NODE_VERSION = "16"
+
+[[redirects]]
+  from = "/thanks"
+  to = "/"
+  status = 200
+  force = false

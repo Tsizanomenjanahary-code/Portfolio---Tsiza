@@ -1,0 +1,610 @@
+﻿﻿<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4c6ef5" />
+
+  <title>Tsiza Nomenjanahary — Portfolio</title>
+  <meta name="description" content="Portfolio professionnel — Tsiza Nomenjanahary" />
+
+  <link href="css/css2.css" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script>
+    tailwind = window.tailwind || {};
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'ui-sans-serif', 'system-ui'] },
+          boxShadow: { soft: '0 10px 30px rgba(2,6,23,0.12)' },
+          screens: {
+            'xs': '475px',
+            '3xl': '1920px',
+          }
+        }
+      }
+    };
+  </script>
+  <script src="javascript/tailwindcss.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="css/aos.css" rel="stylesheet" />
+  <script src="javascript/aos.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-[#0b1220] dark:text-[#e6eef8] antialiased" data-lang="fr">
+
+  <!-- LOADER -->
+  <div id="siteLoader" class="lock-scroll">
+    <div class="loaderBox">
+      <div>
+        <div style="font-weight:600">Tsiza — Portfolio</div>
+        <div style="font-size:12px; color:#6b7280">Chargement...</div>
+      </div>
+      <div class="loaderDots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 w-full border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 supports-backdrop-blur:bg-white/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+
+      <!-- Logo / Identité -->
+      <a href="index.html" class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+        <img src="images/photo.png" alt="Tsiza"
+          class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full object-cover shadow-soft flex-shrink-0">
+        <div class="min-w-0 flex-1">
+          <div class="text-base sm:text-lg font-semibold truncate">Tsiza Nomenjanahary</div>
+          <div class="text-xs text-slate-500 dark:text-slate-300 truncate" data-i18n="role">Développeur / Formateur
+          </div>
+        </div>
+      </a>
+
+      <!-- NAV + Sélecteurs -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuButton" class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-2 sm:gap-3">
+          <!-- LANG -->
+          <select id="langSelect" class="rounded-md border px-2 py-1 text-sm dark:bg-slate-900 min-w-16">
+            <option value="fr">FR</option>
+            <option value="mg">MG</option>
+            <option value="en">EN</option>
+          </select>
+
+          <!-- THEME -->
+          <select id="themeSelect" class="rounded-md border px-2 py-1 text-sm dark:bg-slate-900 min-w-20">
+            <option value="auto">Auto</option>
+            <option value="light">Clair</option>
+            <option value="dark">Sombre</option>
+          </select>
+
+          <a href="projets.html"
+            class="text-sm px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 whitespace-nowrap"
+            data-i18n="projectsNav">Projets</a>
+
+          <button onclick="scrollToContact()"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-md text-sm whitespace-nowrap"
+            data-i18n="contactBtn">Contact</button>
+
+          <button onclick="openCV()" class="border px-3 py-2 rounded-md text-sm dark:border-slate-700 whitespace-nowrap"
+            data-i18n="cvBtn">CV</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu"
+      class="md:hidden border-t dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+      <div class="px-4 py-3 space-y-3">
+        <div class="flex gap-2">
+          <select id="langSelectMobile" class="flex-1 rounded-md border px-2 py-2 text-sm dark:bg-slate-900">
+            <option value="fr">FR</option>
+            <option value="mg">MG</option>
+            <option value="en">EN</option>
+          </select>
+          <select id="themeSelectMobile" class="flex-1 rounded-md border px-2 py-2 text-sm dark:bg-slate-900">
+            <option value="auto">Auto</option>
+            <option value="light">Clair</option>
+            <option value="dark">Sombre</option>
+          </select>
+        </div>
+        <a href="projets.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-center"
+          data-i18n="projectsNav">Projets</a>
+        <button onclick="scrollToContact()"
+          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-md text-sm"
+          data-i18n="contactBtn">Contact</button>
+        <button onclick="openCV()" class="w-full border px-3 py-2 rounded-md text-sm dark:border-slate-700"
+          data-i18n="cvBtn">CV</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 mt-24">
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+      <!-- Texte -->
+      <div class="lg:col-span-2 space-y-4 sm:space-y-6">
+        <h1 class="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight sm:leading-tight"
+          data-i18n="headline">
+          Bonjour — Je suis <span class="text-indigo-600">Tsiza</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="lead">
+          Développeur full-stack spécialisé dans les applications de gestion sur mesure avec Windev, Windev Mobile et technologies web. 
+  Je crée des solutions digitales complètes pour optimiser les processus des PME et startups.
+        </p>
+
+        <div class="flex flex-col xs:flex-row gap-3 pt-2">
+          <a href="projets.html"
+            class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-soft text-center text-sm sm:text-base font-medium transition-all duration-200 hover:scale-105"
+            data-i18n="projectsBtn">Voir mes projets</a>
+          <a href="#about"
+            class="px-6 py-3 border rounded-xl text-slate-700 dark:text-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-center text-sm sm:text-base font-medium transition-all duration-200"
+            data-i18n="aboutBtn">À propos</a>
+        </div>
+
+        <!-- Technologies avec grandes icônes -->
+        <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
+          <h3 class="font-semibold text-xl mb-6 text-indigo-600 dark:text-indigo-400 text-center">Technologies Maîtrisées</h3>
+          <div class="mt-6 flex flex-wrap gap-4 justify-center text-sm text-slate-500 dark:text-slate-300">
+            <!-- HTML/CSS -->
+            <div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-50 dark:bg-slate-800 min-w-[100px]">
+              <svg class="w-12 h-12 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z" />
+              </svg>
+              <span class="font-medium text-slate-700 dark:text-slate-300">HTML/CSS</span>
+            </div>
+    
+            <!-- Tailwind -->
+            <div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-50 dark:bg-slate-800 min-w-[100px]">
+              <svg class="w-12 h-12 text-cyan-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+              </svg>
+              <span class="font-medium text-slate-700 dark:text-slate-300">Tailwind</span>
+            </div>
+    
+            <!-- PHP -->
+            <div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-50 dark:bg-slate-800 min-w-[100px]">
+              <svg class="w-12 h-12 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.5,16.25C16.5,15 13.12,14.75 12,14.75C10.88,14.75 7.5,15 7.5,16.25V17H16.5V16.25M16.5,13.75C16.5,12.5 13.12,12.25 12,12.25C10.88,12.25 7.5,12.5 7.5,13.75V14.5H16.5V13.75M16.5,11.25C16.5,10 13.12,9.75 12,9.75C10.88,9.75 7.5,10 7.5,11.25V12H16.5V11.25M12,5C8.69,5 6,6.07 6,7.5C6,8.93 8.69,10 12,10C15.31,10 18,8.93 18,7.5C18,6.07 15.31,5 12,5Z" />
+              </svg>
+              <span class="font-medium text-slate-700 dark:text-slate-300">PHP</span>
+            </div>
+    
+            <!-- MySQL -->
+            <div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-50 dark:bg-slate-800 min-w-[100px]">
+              <svg class="w-12 h-12 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+              </svg>
+              <span class="font-medium text-slate-700 dark:text-slate-300">MySQL</span>
+            </div>
+    
+            <!-- JavaScript -->
+            <div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-50 dark:bg-slate-800 min-w-[100px]">
+              <svg class="w-12 h-12 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3,3H21V21H3V3M7.73,18.04C8.13,18.89 8.92,19.59 10.27,19.59C11.77,19.59 12.8,18.79 12.8,17.04V11.26H11.1V17C11.1,17.86 10.75,18.08 10.2,18.08C9.62,18.08 9.38,17.68 9.11,17.21L7.73,18.04M13.71,17.86C14.21,18.84 15.22,19.59 16.8,19.59C18.4,19.59 19.6,18.76 19.6,17.23C19.6,15.82 18.79,15.19 17.35,14.57L16.93,14.39C16.2,14.08 15.89,13.87 15.89,13.37C15.89,12.96 16.2,12.64 16.7,12.64C17.18,12.64 17.5,12.85 17.79,13.37L19.1,12.5C18.55,11.54 17.77,11.17 16.7,11.17C15.19,11.17 14.22,12.13 14.22,13.4C14.22,14.78 15.03,15.43 16.25,15.95L16.67,16.13C17.45,16.47 17.91,16.68 17.91,17.26C17.91,17.74 17.46,18.09 16.76,18.09C15.93,18.09 15.45,17.66 15.09,17.06L13.71,17.86Z" />
+              </svg>
+              <span class="font-medium text-slate-700 dark:text-slate-300">JavaScript</span>
+            </div>
+            
+            <!-- HFSQL -->
+            <div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-50 dark:bg-slate-800 min-w-[100px]">
+              <svg class="w-12 h-12 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M4,6V18H11V6H4M20,18V6H18.76C19,6.54 18.95,7.07 18.95,7.13C18.88,7.8 18.41,8.5 18.24,8.75L15.91,11.3L19.23,11.28L19.24,12.5L14.04,12.47L14,11.47C14,11.47 17.05,8.24 17.2,7.95C17.34,7.67 17.91,6 16.5,6C15.27,6.05 15.41,7.3 15.41,7.3L13.87,7.31C13.87,7.31 13.88,6.65 14.25,6H13V18H15.58L15.57,17.14L16.54,17.13C16.54,17.13 17.45,16.97 17.46,16.08C17.5,15.08 16.65,15.08 16.5,15.08C16.37,15.08 15.43,15.13 15.43,15.95H13.91C13.91,15.95 13.95,13.89 16.5,13.89C19.1,13.89 18.96,15.91 18.96,15.91C18.96,15.91 19,17.16 17.85,17.63L18.37,18H20M8.92,16H7.42V10.2L5.62,10.76V9.53L8.76,8.41H8.92V16Z" />
+              </svg>
+              <span class="font-medium text-slate-700 dark:text-slate-300">HFSQL</span>
+            </div>
+
+            <!-- Windev -->
+            <div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-50 dark:bg-slate-800 min-w-[100px]">
+              <svg class="w-12 h-12 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" />
+              </svg>
+              <span class="font-medium text-slate-700 dark:text-slate-300">Windev</span>
+            </div>
+    
+            <!-- Windev Mobile -->
+            <div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-50 dark:bg-slate-800 min-w-[100px]">
+              <svg class="w-12 h-12 text-indigo-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z" />
+              </svg>
+              <span class="font-medium text-slate-700 dark:text-slate-300 text-center">Windev Mobile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Profil -->
+      <aside class="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-6 shadow-soft order-first lg:order-last"
+        data-aos="fade-left">
+        <div class="aspect-square max-w-xs mx-auto mb-4 sm:mb-6">
+          <img src="images/photo.png" alt="Tsiza Nomenjanahary"
+            class="w-full h-full object-cover rounded-xl bg-white dark:bg-slate-800">
+        </div>
+        <h3 class="font-semibold text-lg text-center">Tsiza Nomenjanahary</h3>
+        <p class="text-sm text-slate-500 dark:text-slate-300 text-center mt-1 mb-4">Développeur / Analyste Programmeur /
+          Formateur</p>
+
+        <div class="flex flex-col sm:flex-row gap-2 mb-4">
+          <a href="https://github.com/Tsizanomenjanahary-code" target="_blank"
+            class="flex-1 text-sm px-3 py-2 border rounded-md dark:border-slate-700 text-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+            GitHub
+          </a>
+          <a href="https://wa.me/261342700357" target="_blank"
+            class="flex-1 text-sm px-3 py-2 border rounded-md dark:border-slate-700 text-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+            WhatsApp
+          </a>
+          <a href="https://www.linkedin.com/in/tsizanomenjanahary-274544349" target="_blank"
+            class="flex-1 text-sm px-3 py-2 border rounded-md dark:border-slate-700 text-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+            LinkedIn
+          </a>
+        </div>
+
+        <button onclick="openCV()"
+          class="w-full bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-3 rounded-md font-medium transition-all duration-200 hover:scale-105">
+          Télécharger CV
+        </button>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="mt-16 sm:mt-20 lg:mt-24 grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 shadow-soft" data-aos="fade-up">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6" data-i18n="aboutTitle">À propos</h2>
+
+        <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6 sm:mb-8" data-i18n="aboutText">
+          Passionné par le développement depuis plus de 5 ans, je maîtrise Windev, Windev Mobile ainsi que les technologies web (HTML, PHP, JS, CSS, MySQL). 
+          Je crée des applications de gestion complètes, intuitives et performantes, adaptées aux besoins spécifiques de chaque entreprise.
+        </p>
+
+        <h3 class="font-semibold text-xl mb-4">Compétences</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+          <!-- Informatique bureautique -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-xl mb-4 text-indigo-600 dark:text-indigo-400">Informatique bureautique</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                </svg>
+                <span>Word</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16.36,14C16.44,13.34 16.5,12.68 16.5,12C16.5,11.32 16.44,10.66 16.36,10H19.74C19.9,10.64 20,11.31 20,12C20,12.69 19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12C9.5,11.32 9.56,10.65 9.66,10H14.34C14.43,10.65 14.5,11.32 14.5,12C14.5,12.68 14.43,13.34 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12C4,11.31 4.1,10.64 4.26,10H7.64C7.56,10.66 7.5,11.32 7.5,12C7.5,12.68 7.56,13.34 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M18.92,8H15.97C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.34 18.92,8M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+                </svg>
+                <span>Excel</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+                </svg>
+                <span>PowerPoint</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
+                </svg>
+                <span>Publisher</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Programmation -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-xl mb-4 text-indigo-600 dark:text-indigo-400">Programmation</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+                </svg>
+                <span>Access</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
+                </svg>
+                <span>Visual Basic</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L6.04,7.5L12,10.85L17.96,7.5L12,4.15Z" />
+                </svg>
+                <span>Windev</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PAO -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-xl mb-4 text-indigo-600 dark:text-indigo-400">PAO</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L6.04,7.5L12,10.85L17.96,7.5L12,4.15Z" />
+                </svg>
+                <span>Photoshop</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.5,2.27L5,10.14C4.66,10.34 4.66,10.67 5,10.87L11.5,14.67C11.81,14.85 12.18,14.85 12.5,14.67L19,10.87C19.34,10.67 19.34,10.34 19,10.14L18.5,2.27C18.5,2.27 12,6.4 12,6.4C12,6.4 5.5,2.27 5.5,2.27C5.5,2.27 5.5,10.14 5.5,10.14C5.5,10.14 12,14 12,14C12,14 18.5,10.14 18.5,10.14C18.5,10.14 18.5,2.27 18.5,2.27M12,22C10.34,22 9,20.66 9,19C9,17.34 10.34,16 12,16C13.66,16 15,17.34 15,19C15,20.66 13.66,22 12,22Z" />
+                </svg>
+                <span>InDesign</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.6,4.7C0.4,7.1 0.9,10.1 2.9,12.1C4.8,14 7.5,14.5 9.8,13.6L18.9,22.7C19.3,23.1 19.9,23.1 20.3,22.7L22.6,20.4C23.1,20 23.1,19.3 22.7,19Z" />
+                </svg>
+                <span>Illustrator</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,14.09 4.8,16 6.11,17.41L9.88,9.88L17.41,6.11C16,4.8 14.09,4 12,4M12,20A8,8 0 0,0 20,12C20,9.91 19.2,8 17.89,6.59L14.12,14.12L6.59,17.89C8,19.2 9.91,20 12,20M12,12L11.23,11.23L9.7,14.3L12,12M12,12L14.3,9.7L11.23,11.23L12,12Z" />
+                </svg>
+                <span>QuarkXPress</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Comptabilité informatisée -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-xl mb-4 text-indigo-600 dark:text-indigo-400">Comptabilité informatisée</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3,3H21V21H3V3M7,7V17H17V7H7M15,15H9V9H15V15Z" />
+                </svg>
+                <span>Ciel Compta</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3,3H21V21H3V3M7,7V17H17V7H7M15,15H9V9H15V15Z" />
+                </svg>
+                <span>Sage 100</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Développement Web -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-xl mb-4 text-indigo-600 dark:text-indigo-400">Développement Web</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z" />
+                </svg>
+                <span>HTML</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M5,3L6.4,6.58L11.37,5.22L9.72,10.15L15.97,10.9L12.9,15.8L17.5,20.32L14.43,14.8L20,13.05L14.55,11.85L16.9,6.5L10.3,7.5L12.6,2L5,3Z" />
+                </svg>
+                <span>CSS</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3,3H21V21H3V3M7.73,18.04C8.13,18.89 8.92,19.59 10.27,19.59C11.77,19.59 12.8,18.79 12.8,17.04V11.26H11.1V17C11.1,17.86 10.75,18.08 10.2,18.08C9.62,18.08 9.38,17.68 9.11,17.21L7.73,18.04M13.71,17.86C14.21,18.84 15.22,19.59 16.8,19.59C18.4,19.59 19.6,18.76 19.6,17.23C19.6,15.82 18.79,15.19 17.35,14.57L16.93,14.39C16.2,14.08 15.89,13.87 15.89,13.37C15.89,12.96 16.2,12.64 16.7,12.64C17.18,12.64 17.5,12.85 17.79,13.37L19.1,12.5C18.55,11.54 17.77,11.17 16.7,11.17C15.19,11.17 14.22,12.13 14.22,13.4C14.22,14.78 15.03,15.43 16.25,15.95L16.67,16.13C17.45,16.47 17.91,16.68 17.91,17.26C17.91,17.74 17.46,18.09 16.76,18.09C15.93,18.09 15.45,17.66 15.09,17.06L13.71,17.86Z" />
+                </svg>
+                <span>JavaScript</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.5,16.25C16.5,15 13.12,14.75 12,14.75C10.88,14.75 7.5,15 7.5,16.25V17H16.5V16.25M16.5,13.75C16.5,12.5 13.12,12.25 12,12.25C10.88,12.25 7.5,12.5 7.5,13.75V14.5H16.5V13.75M16.5,11.25C16.5,10 13.12,9.75 12,9.75C10.88,9.75 7.5,10 7.5,11.25V12H16.5V11.25M12,5C8.69,5 6,6.07 6,7.5C6,8.93 8.69,10 12,10C15.31,10 18,8.93 18,7.5C18,6.07 15.31,5 12,5Z" />
+                </svg>
+                <span>PHP</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+                </svg>
+                <span>MySQL</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg class="w-6 h-6 text-cyan-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+                </svg>
+                <span>Tailwind</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Langues -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-xl mb-4 text-indigo-600 dark:text-indigo-400">Langues</h3>
+            <div class="space-y-4">
+              <!-- Malagasy -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-8 h-8" viewBox="0 0 36 36">
+                      <path fill="#FFFFFF" d="M0,0 H12 V36 H0 z"/> <!-- Blanc à gauche -->
+                      <path fill="#FC3D32" d="M12,0 H36 V18 H12 z"/> <!-- Rouge en haut -->
+                      <path fill="#007E3A" d="M12,18 H36 V36 H12 z"/> <!-- Vert en bas -->
+                    </svg>
+                    <span class="font-medium">Malagasy</span>
+                  </div>
+                  <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">100%</span>
+                </div>
+                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                  <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                </div>
+              </div>
+              
+              <!-- Français -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-8 h-8" viewBox="0 0 36 36">
+                      <path fill="#ED2939" d="M36 27a4 4 0 0 1-4 4h-8V5h8a4 4 0 0 1 4 4v18z"/>
+                      <path fill="#002395" d="M4 5h8v26H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4z"/>
+                      <path fill="#FFF" d="M12 5h12v26H12z"/>
+                    </svg>
+                    <span class="font-medium">Français</span>
+                  </div>
+                  <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">90%</span>
+                </div>
+                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                  <div class="bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+              
+              <!-- Anglais -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-8 h-8" viewBox="0 0 36 36">
+                      <path fill="#012169" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z"/>
+                      <path fill="#FFF" d="M23.4 5l-5.4 3-5.4-3H4v3.5l5.4 3v3L4 14.5V18l5.4-3v3l-3.6 2v2.5L12 18v3l-3.6 2.1L12 23l-3.6 2.1L12 27v2h2.4l5.4-3 5.4 3H32v-3.5l-5.4-3v-3l5.4 3.5V18l-5.4 3v-3l3.6-2v-2.5L24 18v-3l3.6-2.1L24 13l3.6-2.1L24 9V5h-2.4z"/>
+                      <path fill="#C8102E" d="M24 13.5l3.6-2.1L24 9v4.5zm-12 0V9l-3.6 2.4L12 13.5zm12 9V27l3.6-2.4L24 22.5zm-12 0L8.4 24.6 12 27v-4.5zM32 5h-8.4l5.4 3V5zm-20.4 0H4v3l5.4-3zm20.4 26h-8.4l5.4-3v3zm-20.4 0H4v-3l5.4 3z"/>
+                      <path fill="#FFF" d="M20.4 5h-8.4v8.5H0v9h12V31h12V22.5h12v-9H20.4z"/>
+                      <path fill="#C8102E" d="M14.4 5h7.2v9.5H36v3H21.6V31h-7.2v-13.5H0v-3h14.4z"/>
+                    </svg>
+                    <span class="font-medium">Anglais</span>
+                  </div>
+                  <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">70%</span>
+                </div>
+                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                  <div class="bg-purple-500 h-2 rounded-full" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <aside id="contactCard" class="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 shadow-soft h-fit sticky top-32"
+        data-aos="fade-up" data-aos-delay="120">
+        <h3 class="font-semibold text-xl mb-4 sm:mb-6" data-i18n="contactTitle">Contact</h3>
+
+        <form id="contactForm" class="space-y-4 sm:space-y-6" onsubmit="return handleFormSubmit(event)">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+              data-i18n="labelName">Nom</label>
+            <input name="name" required
+              class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+              data-i18n="labelEmail">E-mail</label>
+            <input name="email" required type="email"
+              class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+              data-i18n="labelMessage">Message</label>
+            <textarea name="message" rows="5" required
+              class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 resize-vertical"></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <button type="submit"
+              class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105"
+              data-i18n="sendBtn">
+              Envoyer
+            </button>
+            <button type="reset"
+              class="flex-1 px-6 py-3 border border-slate-300 dark:border-slate-600 rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              Réinitialiser
+            </button>
+          </div>
+
+          <p id="formStatus" class="text-sm text-slate-500 dark:text-slate-400 text-center mt-4"></p>
+        </form>
+        <!-- Informations de contact -->
+        <div class="mb-6 sm:mb-8 space-y-4">
+          <!-- Téléphone -->
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-medium text-sm text-slate-900 dark:text-white" data-i18n="phoneLabel">Téléphone</div>
+              <div class="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                <div>±261 34 27 003 57</div>
+                <div>±261 33 73 701 61</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-medium text-sm text-slate-900 dark:text-white" data-i18n="whatsappLabel">WhatsApp</div>
+              <div class="text-sm text-slate-600 dark:text-slate-300 mt-1">±261 34 27 003 57</div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-medium text-sm text-slate-900 dark:text-white" data-i18n="emailLabel">Email</div>
+              <a href="mailto:rakototsizanaka@gmail.com"
+                class="text-sm text-slate-600 dark:text-slate-300 mt-1 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors break-all">
+                rakototsizanaka@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <!-- Adresse -->
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 text-orange-600 dark:text-orange-400 mt-0.5 flex-shrink-0">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-medium text-sm text-slate-900 dark:text-white" data-i18n="addressLabel">Adresse</div>
+              <div class="text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                Antanandrano Ankadikely-Ilafy<br>
+                Antananarivo, Madagascar
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+
+  <footer class="border-t mt-16 sm:mt-20 py-8 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      © <span id="year"></span> Tsiza Nomenjanahary — Tous droits réservés
+    </div>
+  </footer>
+
+  <script src="javascript/app.js"></script>
+</body>
+
+</html>
